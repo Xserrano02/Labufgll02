@@ -2,15 +2,15 @@
   <h1>Calculadora de Salario</h1>
   
   <label for="salary">Ingresar Salario:</label>
-  <input  id="salary" type="number">
+  <input [(ngModel)]="salary" id="salary" type="number">
 
   <button (click)="calculate()">Calcular</button>
 
-  <div >
-    <p><strong>Salario Base:</strong></p>
-    <p><strong>Descuento de renta:</strong> </p>
-    <p><strong>Descuento AFP:</strong></p>
-    <p><strong>Descuento ISSS:</strong> </p>
-    <p><strong>Salario liquido a cancelar:</strong></p>
+  <div *ngIf="showResults">
+    <p><strong>Salario Base:</strong> {{ salary | currency:'USD':'symbol':'1.2-2' }}</p>
+    <p><strong>Descuento de renta:</strong> {{ renta | currency:'USD':'symbol':'1.2-2' }}</p>
+    <p><strong>Descuento AFP:</strong> {{ afp | currency:'USD':'symbol':'1.2-2' }}</p>
+    <p><strong>Descuento ISSS:</strong> {{ isss | currency:'USD':'symbol':'1.2-2' }}</p>
+    <p><strong>Salario liquido a cancelar:</strong> {{ netSalary | currency:'USD':'symbol':'1.2-2' }}</p>
   </div>
 </div>
