@@ -15,17 +15,16 @@ export class AppComponent {
   SalaryAfpIsss: number = 0;
 
   calculate() {
-    this.calculateRenta();
     this.calculateAFP();
     this.calculateISSS();
+    this.SalaryAfpIsss = this.salary - this.afp - this.isss;
+    this.calculateRenta();
     this.netSalary = this.salary - this.renta - this.afp - this.isss;
     this.showResults = true;
   }
 
   calculateRenta() {
 
-    this.SalaryAfpIsss = this.salary - this.afp - this.isss;
-    
     if (this.SalaryAfpIsss > 0.01 && this.SalaryAfpIsss <= 472.00) {
       
       this.renta = 0;
