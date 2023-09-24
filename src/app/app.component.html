@@ -1,12 +1,14 @@
-<div class="container">
+<div class="custom-container">
   <h1>Calculadora de Salario</h1>
   
-  <label for="salary">Ingresar Salario:</label>
-  <input [(ngModel)]="salary" id="salary" type="number">
+  <div class="input-group">
+    <label for="salary">Ingresar Salario:</label>
+    <input [(ngModel)]="salary" id="salary" type="number">
+  </div>
 
   <button (click)="calculate()">Calcular</button>
 
-  <div *ngIf="showResults">
+  <div class="results" *ngIf="showResults">
     <p><strong>Salario Base:</strong> {{ salary | currency:'USD':'symbol':'1.2-2' }}</p>
     <p><strong>Descuento de renta:</strong> {{ renta | currency:'USD':'symbol':'1.2-2' }}</p>
     <p><strong>Descuento AFP:</strong> {{ afp | currency:'USD':'symbol':'1.2-2' }}</p>
