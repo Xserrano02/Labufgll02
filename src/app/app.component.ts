@@ -50,7 +50,12 @@ export class AppComponent {
   }
 
   calculateISSS() {
-    const ISSS_PERCENTAGE = 0.03;  
-    this.isss = this.salary * ISSS_PERCENTAGE;
-  }
+    const ISSS_PERCENTAGE = 0.03;
+    const ISSS_MAX_AMOUNT = 30;
+    
+    let potentialDeduction = this.salary * ISSS_PERCENTAGE;
+    
+    this.isss = potentialDeduction > ISSS_MAX_AMOUNT ? ISSS_MAX_AMOUNT : potentialDeduction;
+}
+
 }
