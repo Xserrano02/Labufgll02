@@ -37,7 +37,7 @@ export class AppComponent {
       const exceso = this.SalaryAfpIsss - 895.24;
       this.renta = exceso * 0.20 + 60.00;
     } else if (this.SalaryAfpIsss > 2038.11) {
-      // Tramo 4: 20% sobre el exceso de $895.24, más cuota fija de $60.00
+      
       const exceso = this.SalaryAfpIsss - 2038.10;
       this.renta = exceso * 0.30 + 288.57;
     }
@@ -50,7 +50,12 @@ export class AppComponent {
   }
 
   calculateISSS() {
-    const ISSS_PERCENTAGE = 0.03;  
-    this.isss = this.salary * ISSS_PERCENTAGE;
-  }
+    const ISSS_PERCENTAGE = 0.03;
+    const ISSS_MAX_AMOUNT = 30;
+    
+    let potentialDeduction = this.salary * ISSS_PERCENTAGE;
+    
+    this.isss = potentialDeduction > ISSS_MAX_AMOUNT ? ISSS_MAX_AMOUNT : potentialDeduction;
+}
+
 }
